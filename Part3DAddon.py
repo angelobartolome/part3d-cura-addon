@@ -64,7 +64,7 @@ class Part3DRequestHandler(BaseHTTPRequestHandler):
         Logger.log('d', "RequestHandler --> " + format % args)
         return
 
-class Part3DIntegration(QObject, Extension):
+class Part3DAddon(QObject, Extension):
     from cura.CuraApplication import CuraApplication
 
     api = CuraApplication.getInstance().getCuraAPI()
@@ -85,7 +85,7 @@ class Part3DIntegration(QObject, Extension):
 
         self.wsInfo = ServiceInfo(
                         '_http._tcp.local.',
-                       "Part3Dapp._http._tcp.local.", 
+                       "cadplusapp._http._tcp.local.", # Old codename for the app
                        addresses=addrs,
                        port=PORT,
                        properties=desc,
