@@ -1,0 +1,21 @@
+name: Build plugin
+
+on: [push]
+
+jobs:
+  build-plugin:
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: fieldOfView/cura-plugin-packager-action@main
+        with:
+          source_folder: "."
+          package_info_path: ".github/workflows/package.json"
+      - name: Upload built package
+        uses: actions/upload-artifact@v3
+        with:
+          name: Package
+          path: ./*.curapackage
+          retention-days: 10
